@@ -62,15 +62,24 @@ const Modal = ({ isOpen, onClose, onSubmit, type, data, currentDateTime }) => {
     try {
       let response;
       if (type === 'salary' || type === 'advance') {
-        response = await axios.put(`/api/salary/update/${data.id}`, formData);
+        response = await axios.put(`http://localhost:5000/api/salary/update/${data.id}`, formData, {
+          headers: {
+            'Content-Type': 'application/json',
+            'username': 'Plutish2004'
+          }
+        });
       } else if (type === 'leave') {
-        response = await axios.put(`/api/leaves/update/${data.id}`, formData);
+        response = await axios.put(`http://localhost:5000/api/leaves/update/${data.id}`, formData, {
+          headers: {
+            'Content-Type': 'application/json',
+            'username': 'Plutish2004'
+          }
+        });
       }
       
-      if (response.data.success) {
-        onSubmit(formData);
-        onClose();
-      }
+      // Pass the entire response data to the parent component
+      onSubmit({ ...formData, id: data.id, recordType: type });
+      onClose();
     } catch (error) {
       console.error('Failed to update record:', error);
       alert('Failed to update record. Please try again.');

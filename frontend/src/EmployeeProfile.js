@@ -173,15 +173,26 @@ const EmployeeProfile = () => {
   const handleSaveEdit = async (editedRecord) => {
     try {
       let endpoint;
+      let requestData;
+      
       if (editedRecord.recordType === 'salary' || editedRecord.recordType === 'advance') {
         endpoint = `http://localhost:5000/api/salary/update/${editedRecord.id}`;
+        requestData = {
+          amount: editedRecord.amount,
+          date: editedRecord.date
+        };
       } else if (editedRecord.recordType === 'leave') {
         endpoint = `http://localhost:5000/api/leaves/update/${editedRecord.id}`;
+        requestData = {
+          start_date: editedRecord.start_date,
+          end_date: editedRecord.end_date,
+          days_taken: editedRecord.days_taken
+        };
       }
 
-      const response = await axios.put(
+      await axios.put(
         endpoint,
-        editedRecord,
+        requestData,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -190,13 +201,10 @@ const EmployeeProfile = () => {
         }
       );
 
-      if (response.data.success) {
-        fetchEmployeeData(); // Refresh all data
-        setIsModalOpen(false);
-        setEditingRecord(null);
-      } else {
-        throw new Error('Failed to update record');
-      }
+      // If we get here, the update was successful
+      fetchEmployeeData(); // Refresh all data
+      setIsModalOpen(false);
+      setEditingRecord(null);
     } catch (err) {
       console.error('Error updating record:', err);
       alert(err.response?.data?.error || 'Failed to update record. Please try again.');
