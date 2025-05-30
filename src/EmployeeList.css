@@ -1,0 +1,393 @@
+/* Updated header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.header-left .title {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.header-right {
+  text-align: right;
+}
+
+.current-datetime {
+  color: #666;
+  font-family: monospace;
+  font-size: 14px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+}
+
+.current-user {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Table styles with improved alignment */
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.employee-table th {
+  background-color: #f8f9fa;
+  padding: 12px 8px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #dee2e6;
+  text-align: center;
+}
+
+.employee-table th:first-child {
+  text-align: left;
+}
+
+.employee-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #dee2e6;
+  vertical-align: middle;
+  text-align: center;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+.search-input {
+  width: 250px;
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.refresh-button {
+  padding: 8px;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -1px; /* Connects it with search input */
+}
+
+.refresh-button:hover {
+  background-color: #f5f5f5;
+}
+
+/* Column-specific alignments */
+.employee-table td:first-child {
+  text-align: left; /* Name column */
+}
+
+.employee-table td:not(:first-child):not(:last-child) {
+  text-align: center; /* All columns except name and actions */
+}
+
+/* Address cell styles */
+.address-cell {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  text-align: center;
+  padding: 4px 8px;
+  margin: 0 auto;
+}
+
+.address-cell:hover::after {
+  content: attr(data-full-address);
+  position: absolute; /* Changed from fixed to absolute */
+  left: 0;
+  top: 100%; /* Position below the cell */
+  background-color: #333;
+  color: white;
+  padding: 12px;
+  border-radius: 4px;
+  z-index: 1000;
+  white-space: normal;
+  max-width: 300px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 5px; /* Small gap from the cell */
+}
+
+/* Row hover effect */
+.employee-table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.employee-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.employee-row:hover {
+  background-color: #e3f2fd !important;
+  transition: background-color 0.2s ease;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  min-width: 70px; /* Ensure minimum width for buttons */
+}
+
+.icon-button {
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px; /* Fixed width for buttons */
+  height: 28px; /* Fixed height for buttons */
+}
+
+.icon-button:hover {
+  background-color: #f8f8f8;
+  border-radius: 4px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Employee name link */
+.employee-name-link {
+  color: #007bff;
+  text-decoration: none;
+  display: block;
+}
+
+.employee-name-link:hover {
+  color: #0056b3;
+}
+
+/* Table container */
+.table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Column widths */
+.employee-table th:nth-child(1),
+.employee-table td:nth-child(1) { width: 15%; }
+
+.employee-table th:nth-child(2),
+.employee-table td:nth-child(2) { width: 12%; }
+
+.employee-table th:nth-child(3),
+.employee-table td:nth-child(3) { width: 12%; }
+
+.employee-table th:nth-child(4),
+.employee-table td:nth-child(4) { width: 12%; }
+
+.employee-table th:nth-child(5),
+.employee-table td:nth-child(5) { width: 20%; }
+
+.employee-table th:nth-child(6),
+.employee-table td:nth-child(6) { width: 12%; }
+
+.employee-table th:nth-child(7),
+.employee-table td:nth-child(7) { width: 10%; }
+
+.employee-table th:nth-child(8),
+.employee-table td:nth-child(8) { width: 7%; }
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Form Actions Container */
+.form-actions, .delete-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Save Button Styling */
+.save-button {
+  padding: 8px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+.save-button:active {
+  background-color: #1e7e34;
+}
+
+/* Delete Confirmation Button */
+.confirm-delete-button {
+  padding: 8px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.confirm-delete-button:hover {
+  background-color: #c82333;
+}
+
+.confirm-delete-button:active {
+  background-color: #bd2130;
+}
+
+/* Cancel Button */
+.cancel-button {
+  padding: 8px 20px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
+}
+
+.cancel-button:active {
+  background-color: #545b62;
+}
+
+/* Modal Title */
+.modal-title {
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Delete Message */
+.delete-message {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Delete Modal specific */
+.delete-modal {
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Button disabled states */
+.save-button:disabled,
+.confirm-delete-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Form input and label styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+/* Error text */
+.error-text {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.required {
+  color: red;
+  margin-left: 4px;
+}
+
+.form-input.error {
+  border-color: #dc3545;
+}
+
+.error-text {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}

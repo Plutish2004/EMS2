@@ -1,0 +1,241 @@
+.sidebar {
+  background: linear-gradient(to bottom, #042F70, #59A7E7);
+  color: white;
+  height: 100vh;
+  transition: width 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  width: 250px;
+}
+
+.sidebar.closed {
+  width: 60px;
+}
+
+/* Top Section */
+.sidebar-top {
+  position: relative;
+  padding: 16px;
+  display: flex;
+  flex-direction: column; /* Stack toggle and branding */
+  align-items: center; /* Center horizontally */
+  gap: 15px; /* Consistent gap between toggle and branding */
+  flex-shrink: 0;
+}
+
+/* Toggle Button */
+.custom-toggle {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: relative; /* For positioning cross elements */
+}
+
+.custom-toggle .bar {
+  background-color: #042F70;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  position: absolute;
+}
+
+/* Three horizontal lines when closed */
+.custom-toggle .top-bar {
+  width: 11px;
+  height: 2px;
+  top: 9px; /* Adjust vertical position */
+  left: 7px; /* Align to the left */
+}
+
+.custom-toggle .middle-bar {
+  width: 14px;
+  height: 2px;
+  top: 15px; /* Adjust vertical position */
+  left: 7px; /* Align to the left */
+}
+
+.custom-toggle .bottom-bar {
+  width: 9px;
+  height: 2px;
+  top: 21px; /* Adjust vertical position */
+  left: 7px; /* Align to the left */
+}
+
+/* Open = Cross button */
+.sidebar.open .custom-toggle {
+  position: absolute;
+  right: 16px; /* Push it to the right inside the sidebar */
+  top: 16px;
+}
+
+.sidebar.open .custom-toggle .top-bar {
+  transform: rotate(45deg);
+  width: 16px;
+  top: 50%;
+  left: 50%;
+  margin-top: -1px; /* Half of height */
+  margin-left: -8px; /* Half of width */
+}
+
+.sidebar.open .custom-toggle .middle-bar {
+  opacity: 0;
+}
+
+.sidebar.open .custom-toggle .bottom-bar {
+  transform: rotate(-45deg);
+  width: 16px;
+  top: 50%;
+  left: 50%;
+  margin-top: -1px; /* Half of height */
+  margin-left: -8px; /* Half of width */
+}
+/* Sidebar Branding */
+.sidebar-branding {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px; /* Horizontal padding when open */
+  height: 60px; /* Adjust height as needed */
+  flex-shrink: 0;
+}
+
+/* When Sidebar is Open */
+.sidebar.open .sidebar-branding {
+  justify-content: flex-start; /* Align logo and text to the left */
+  align-items: flex-end; /* Align items to the bottom */
+  margin-top: 14px; /* Push the branding down below the toggle */
+}
+
+/* When Sidebar is Closed */
+.sidebar.closed .sidebar-branding {
+  justify-content: center; /* Center the logo */
+  padding: 0;
+  align-items: center; /* Center vertically */
+  height: auto; /* Adjust height for single logo */
+}
+
+/* Logo Style */
+.sidebar-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Enlarged Logo When Open */
+.sidebar.open .sidebar-logo {
+  width: 50px;
+  height: 50px; /* Adjust if needed */
+}
+
+/* Smaller Logo When Closed */
+.sidebar.closed .sidebar-logo {
+  width: 40px;
+  height: 40px;
+}
+
+/* Text beside logo */
+.sidebar-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Align text to the bottom */
+  align-items: flex-start;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hide text when closed */
+.sidebar.closed .sidebar-text {
+  display: none;
+}
+
+/* Text styles */
+.lodge-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.ems-label {
+  font-size: 12px;
+  color: #d0e3ff;
+}
+
+/* Nav */
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 16px;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  position: relative;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+  padding-right: 0; /* Remove if causing misalignment */
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-left: 0;
+}
+
+.sidebar.closed .nav-links a {
+  justify-content: center;
+  padding: 12px;
+}
+
+.sidebar.closed .nav-icon {
+  display: block;
+  margin: 0 auto;
+}
+
+.sidebar.closed .nav-icon {
+  margin-right: 0;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  /* ... your existing sidebar styles ... */
+}
+
+.nav-links.bottom {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+/* If you need to adjust the main nav-links to not take up all the space */
+.nav-links {
+  flex: 1 0 auto;
+}
